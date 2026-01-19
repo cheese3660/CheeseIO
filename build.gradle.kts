@@ -1,9 +1,10 @@
 plugins {
     `maven-publish`
     id("hytale-mod") version "0.+"
+    id 'org.jetbrains.kotlin.jvm'
 }
 
-group = "com.example"
+group = "page.lexi"
 version = "0.1.0"
 val javaVersion = 25
 
@@ -17,6 +18,7 @@ repositories {
 dependencies {
     compileOnly(libs.jetbrains.annotations)
     compileOnly(libs.jspecify)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 hytale {
@@ -124,4 +126,8 @@ afterEvaluate {
     } else {
         logger.warn("⚠️ Could not find 'runServer' or 'server' task to hook auto-sync into.")
     }
+}
+
+test {
+    useJUnitPlatform()
 }
